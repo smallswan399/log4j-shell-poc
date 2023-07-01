@@ -16,7 +16,7 @@
         </div>
     </div>
     <div class="flex w-1/2 justify-center items-center bg-white">
-        <form class="bg-white" method="POST" action="/login">
+        <form class="bg-white" method="POST" action="/log4shell_war/login">
             <h1 class="text-gray-800 font-bold text-2xl mb-1">Hello Again!</h1>
             <p class="text-sm font-normal text-gray-600 mb-7">Welcome Back</p>
             <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">

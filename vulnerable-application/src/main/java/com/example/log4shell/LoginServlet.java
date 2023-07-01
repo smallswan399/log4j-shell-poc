@@ -5,10 +5,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
-import com.sun.deploy.net.HttpRequest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 
 @WebServlet(name = "loginServlet", value = "/login")
 public class LoginServlet extends HttpServlet {
@@ -19,19 +17,19 @@ public class LoginServlet extends HttpServlet {
         String userName = req.getParameter("uname");
         String password = req.getParameter("password");
 
+        // vulnerable code
+        Logger logger = LogManager.getLogger(LoginServlet.class);
+        String agent = req.getHeader("User-Agent");
+        logger.info(agent);
+
         resp.setContentType("text/html");
         PrintWriter out = resp.getWriter();
         out.println("<html><body>");
 
-        if(userName.equals("admin") && password.equals("password")){
+        if (userName.equals("admin") && password.equals("password")) {
             out.println("Welcome Back Admin");
-        }
-        else{
-
-            // vulnerable code
-            Logger logger = LogManager.getLogger(com.example.log4shell.log4j.class);
+        } else {
             logger.error(userName);
-
             out.println("<code> the password you entered was invalid, <u> we will log your information </u> </code>");
         }
     }
