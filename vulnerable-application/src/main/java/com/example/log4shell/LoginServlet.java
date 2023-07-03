@@ -22,8 +22,7 @@ public class LoginServlet extends HttpServlet {
         // vulnerable code
         String agent = req.getHeader("User-Agent");
         logger.error(agent);
-        logger.info("Log some info here");
-        logger.warn("Log some warn here");
+        logger.error(userName);
 
         resp.setContentType("text/html");
         PrintWriter out = resp.getWriter();
